@@ -46,3 +46,7 @@
   - 访问者模式（Vistor Pattern）
   - 策略模式（Strategy Pattern）
   - 状态模式（State Pattern）
+  
+---
+- [设计模式英文版](https://github.com/tmrts/go-patterns)
+- [设计模式中文版（推荐）](https://github.com/sevenelevenlee/go-patterns)
