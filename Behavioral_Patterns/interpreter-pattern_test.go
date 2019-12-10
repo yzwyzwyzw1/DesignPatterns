@@ -1,5 +1,10 @@
 package Behavioral_Patterns
 
+import (
+	"fmt"
+	"testing"
+)
+
 func TestEqual_Interpret(t *testing.T) {
 	left := Context{"need"}
 	right := Context{"must"}

@@ -2,28 +2,30 @@ package Behavioral_Patterns
 
 import "fmt"
 
-type Context struct {
+//上下文 保存状态值和状态接口的实现类对象
+type Context1 struct {
 	State 		ActionState
 	HealthValue int
 }
 
 //账号的行为
-func (a *Context) View() {
+func (a *Context1) View() {
 	a.State.View()
 }
-func (a *Context) Comment() {
+func (a *Context1) Comment() {
 	a.State.Comment()
 }
-func (a *Context) Create() {
+func (a *Context1) Create() {
 	a.State.Create()
 }
 
-func (a *Context) SetHealth(value int) {
+func (a *Context1) SetHealth(value int) {
 	a.HealthValue = value
 	a.changestate()
 }
 
-func (a *Context) changestate() {
+//根据不同的状态值，获取不同的状态
+func (a *Context1) changestate() {
 	if a.HealthValue < 0 {
 		a.State = &ClosedState{}
 	} else if a.HealthValue > 10 {
@@ -33,12 +35,15 @@ func (a *Context) changestate() {
 	}
 }
 //简单工厂方式创建
-func NewContext(health int) *Context {
-	con := &Context{HealthValue: health}
+func NewContext(health int) *Context1 {
+	con := &Context1{HealthValue: health}
 	con.changestate()
 	return con
 }
-//因为含有多种状态，状态类型不确定，这里需要声明State接口，多态原则
+
+
+
+//因为含有多种状态，状态类型不确定，这里需要声明State接口，多态原则，在golang中通过接口实现多态性
 type ActionState interface {
 	View()
 	Comment()

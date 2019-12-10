@@ -1,11 +1,13 @@
 package Structural_Patterns
 
+
+
 //创建shape接口
-type Shape interface {
+type Shape1 interface {
 	SetRadius(radius int)
 	SetColor(color string)
 }
-//创建circle,实现shape方法
+//接口实现类Circle
 type Circle struct {
 	color string
 	radius int
@@ -19,15 +21,17 @@ func (c *Circle) SetColor(color string) {
 	c.color = color
 }
 
+/*********************************************************/
+
 //创建ShapeFactory
 type ShapeFactory struct {
-	circleMap map[string]Shape
+	circleMap map[string]Shape1  //用 map 存储这些对象
 }
 
 //GetCircle 对象不存在则创建
-func (sh *ShapeFactory) GetCircle(color string) Shape {
+func (sh *ShapeFactory) GetCircle(color string) Shape1 {
 	if sh.circleMap == nil {
-		sh.circleMap = make(map[string]Shape)
+		sh.circleMap = make(map[string]Shape1)
 	}
 	if shape, ok := sh.circleMap[color]; ok {
 		return shape

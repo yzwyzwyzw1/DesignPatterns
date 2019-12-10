@@ -30,7 +30,7 @@ func (director *Director)SetBuilder(builder Builder){
 	director.builder=builder
 }
 
-//定义car对象用来实现接口
+//定义car对象用来实现接口,作为接口的一个实现类
 type Car struct{
 	vehicle Vehicle
 }

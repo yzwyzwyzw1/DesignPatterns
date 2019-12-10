@@ -1,6 +1,7 @@
 package Behavioral_Patterns
 
 
+
 type Operator interface {
 	Apply(int, int) int
 }
@@ -14,20 +15,22 @@ func (op *Operation) Operate(left, right int) int {
 	return op.operator.Apply(left, right)
 }
 
-//Addition struct inherit Operator
+//加法接口实现类
 type Addition struct {}
 
 func (add *Addition) Apply(left, right int) int {
 	return left + right
 }
 
-//Multiplication struct
+//乘法接口实现类对象
 type Multiplication struct {}
 
 func (mu *Multiplication) Apply(left, right int) int {
 	return left * right
 }
 
+
+//创建策略生成器，传入策略，获取具体的策略方法
 func CreateOpration(operator Operator) Operation {
 	return Operation{operator}
 }

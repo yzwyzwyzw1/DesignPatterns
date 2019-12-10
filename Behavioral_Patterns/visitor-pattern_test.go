@@ -1,5 +1,6 @@
 package Behavioral_Patterns
 
+import "testing"
 
 func TestElementContainer_Add(t *testing.T) {
 	container := new(ElementContainer)

@@ -6,7 +6,7 @@ import (
 )
 
 func TestExample_Clone(t *testing.T) {
-	origin := New("origin object")
+	origin := pNew("origin object")
 	current := origin.Clone()
 	fmt.Println(current.Description)
 	//	订制clone对象的属性

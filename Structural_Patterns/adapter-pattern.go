@@ -10,11 +10,11 @@ type Player interface {
 type MusicPlayer struct {
 	Src string
 }
-
-
 func (music *MusicPlayer) PlayMusic() {
 	fmt.Println("play music: " + music.Src)
 }
+
+
 
 //对外接口
 func Play(player Player) {
@@ -26,7 +26,6 @@ func Play(player Player) {
 type GamePlayer struct {
 	Src string
 }
-
 //game的方法
 func (game *GamePlayer) PlaySound() {
 	fmt.Println("play sound: " + game.Src)

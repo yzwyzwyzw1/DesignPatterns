@@ -2,6 +2,8 @@ package Behavioral_Patterns
 
 import "strings"
 
+
+
 /*创建Expression*/
 type Expression interface {
 	Interpret() bool
@@ -16,7 +18,7 @@ func (con *Context) GetVal() string {
 	return con.val
 }
 /*创建ConcreteExpression*/
-//Equal表达式类
+//Equal表达式类 Equal接口实现类
 type Equal struct {
 	left Context
 	right Context
@@ -26,7 +28,7 @@ func (e *Equal) Interpret() bool {
 	return e.left.GetVal() == e.right.GetVal()
 }
 
-//Contain表达式类
+//Contain表达式类 Contain接口实现类
 type Contain struct {
 	left Context
 	right Context
@@ -36,6 +38,8 @@ func (con *Contain) Interpret() bool {
 	return strings.Contains(con.left.GetVal(), con.right.GetVal())
 }
 
+
+//创建解释器，返回接口实现咧对象
 func CreateExpression(kind string, left, right Context) Expression {
 	switch kind {
 	case "equal":

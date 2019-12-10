@@ -5,11 +5,12 @@ import "fmt"
 type Event struct {
 	Info string
 }
-//设计观察者和被观察者接口
+//观察者接口
 type Observer interface {
 	Receive(event Event)
 }
 
+//被观察者接口
 type Notifier interface {
 	Register(observer Observer)
 	Remove(observer Observer)
@@ -17,7 +18,7 @@ type Notifier interface {
 }
 
 //通过具体对象来实现接口
-//投资人观察者
+//投资人观察者 :观察者接口实现类
 type InvestorObserver struct {
 	Name string
 }
@@ -25,7 +26,9 @@ type InvestorObserver struct {
 func (invester *InvestorObserver) Receive(event Event) {
 	fmt.Printf("%s 收到事件通知 %s\n", invester.Name, event.Info)
 }
-//股票被观察者
+
+
+//股票被观察者 :被观察者接口实现类
 type ShareNotifier struct {
 	Price float64
 	oblist []Observer //注册链表
@@ -52,6 +55,8 @@ func (share *ShareNotifier) Notify(event Event) {
 	}
 }
 
+/***************************************************************/
+//事件变动将影响观察者
 func NewEvent() Event {
 	return Event{Info: "价格变动通知"}
 }

@@ -1,19 +1,22 @@
 package Behavioral_Patterns
 
+import "fmt"
+
 //visitor 接口
 type Visitor interface {
 	Visit()
 }
 //具体Visitor对象
+
+//访问者A 的接口实现类
 type ConcreteVisitorA struct {
 	Name string
 }
-
 func (conV *ConcreteVisitorA) Visit() {
 	fmt.Println("this is visitor A")
 }
 
-//Visitor B
+//访问者B 的接口实现类
 type ConcreteVisitorB struct {
 	Name string
 }
@@ -21,17 +24,21 @@ func (conV *ConcreteVisitorB) Visit() {
 	fmt.Println("this is visitor B")
 }
 
+
 //创建元素接口
 type Element interface {
 	Accept(visitor Visitor)
 }
 
-//元素对象
+
+//ElementA实现Element的接口实现类
 type ElementA struct {}
 
 func (e *ElementA) Accept(visitor Visitor)  {
 	visitor.Visit()
 }
+
+
 
 //Element容器
 type ElementContainer struct {

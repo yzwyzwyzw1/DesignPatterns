@@ -1,5 +1,10 @@
 package Behavioral_Patterns
 
+import (
+	"fmt"
+	"reflect"
+	"testing"
+)
 
 func TestAddition_Apply(t *testing.T) {
 	add := new(Addition)
